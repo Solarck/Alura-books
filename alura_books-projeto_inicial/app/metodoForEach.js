@@ -3,9 +3,17 @@ const InserirLivros = document.getElementById('livros')
 function exibirOsLivros(listaDeLivros) {
   InserirLivros.innerHTML = ''
   listaDeLivros.forEach(livro => {
+
+    // let disponibilidade = verificaDisponibilidadeLivro(livro) 
+    // Como podemos ver a baixo a nossa  verificação pode ser reduzida de uma função para uma linha.
+    let disponibilidade = livro.quantidade > 0 ? 'livro_imagens' : 'livros_imagens indisponivel'
+    // A linha a cima pode ser explicada como "livro.quantidade é maior que 0 " se for ("?") 
+    // retorne 'livro_imagens' caso contrario retorne '
+    console.log(disponibilidade)
+
     InserirLivros.innerHTML += `
         <div class="livro">
-      <img class="livro__imagens" src="${livro.imagem}" alt="${livro.alt}" />
+      <img class="${disponibilidade}" src="${livro.imagem}" alt="${livro.alt}" />
       <h2 class="livro__titulo">
         ${livro.titulo}
       </h2>
@@ -17,3 +25,14 @@ function exibirOsLivros(listaDeLivros) {
     </div>`
   })
 }
+
+// Função reduzida
+// function verificaDisponibilidadeLivro(livro) {
+//   if (livro.quantidade > 0) {
+//     return 'livro_imagens'
+//   }
+
+//   else{
+//     return'livros_imagens indisponivel'
+//   }
+// }

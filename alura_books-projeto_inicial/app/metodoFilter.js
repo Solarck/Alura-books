@@ -10,6 +10,6 @@ function filtrarLivros() {
     // Isso fara com que ao clicar nos botoes possam ser verificados seu valor(value), no caso a categoria
     // para que possa ser feita a filtragem.
     const categoria = elementoBtn.value
-    let livrosFiltrados = livros.filter(livro => livro.categoria == categoria)
+    let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria)
     exibirOsLivros(livrosFiltrados)
 }
